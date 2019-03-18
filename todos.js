@@ -1,5 +1,3 @@
-console.log('Running todos.js');
-
 const fs = require('fs');
 
 var addTodo = (title) => {
@@ -31,6 +29,18 @@ var deleteTodo = (title) => {
   return todos.length !== filteredtodos.length;
 };
 
+var markComplete = (title) => {
+  var todos = fetchTodos();
+  var todo = readTodo(title);
+  if (todo) {
+    todo.completed = true;
+    var filteredtodos = todos.filter((todo) => todo.title !== title);
+    filteredtodos.push(todo);
+    saveTodos(filteredtodos);
+  }
+  return todo
+}
+
 var listTodos = () => {
   return fetchTodos();
 }
@@ -50,7 +60,7 @@ var saveTodos = (todos) => {
 
 var logTodo = (todo) => {
   console.log('------');
-  console.log(`It's title is: ${todo.title}`);
+  console.log(`It's title is: ${todo.title}, completed: ${todo.completed}`);
 }
 
 module.exports = {
@@ -58,5 +68,6 @@ module.exports = {
   readTodo,
   deleteTodo,
   listTodos,
-  logTodo
+  logTodo,
+  markComplete
 };

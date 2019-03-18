@@ -1,13 +1,9 @@
-console.log('Running app.js');
-
 const _ = require('lodash');
 const yargs = require('yargs');
 const todos = require('./todos.js');
 
 const argv = yargs.argv;
 var command = argv._[0]
-
-console.log('You ran the command: ', command);
 
 if (command === 'addTodo'){
   todos.addTodo(argv.title);
@@ -27,6 +23,13 @@ if (command === 'addTodo'){
   var allTodos = todos.listTodos();
   console.log(`Printing ${allTodos.length} todo(s).`);
   allTodos.forEach((todo) => todos.logTodo(todo));
+} else if (command === 'markComplete') {
+    var todo = todos.markComplete(argv.title);
+    if (todo) {
+      console.log('Todo marked as complete');
+    } else {
+      console.log('Todo not found');
+    }
 } else {
   console.log('Invalid command')
 }
