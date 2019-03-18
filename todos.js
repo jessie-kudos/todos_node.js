@@ -16,6 +16,14 @@ var addTodo = (title) => {
     return todo;
   }
 };
+
+var deleteTodo = (title) => {
+  var todos = fetchTodos();
+  var filteredtodos = todos.filter((todo) => todo.title !== title);
+  saveTodos(filteredtodos);
+
+  return todos.length !== filteredtodos.length;
+};
 var fetchTodos = () => {
   try {
     var todosString = fs.readFileSync('todos-data.json');
@@ -30,4 +38,5 @@ var saveTodos = (todos) => {
 };
 module.exports = {
   addTodo,
+  deleteTodo,
 };
