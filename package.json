@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jmeredithklein/todos_node.js/issues"
   },
-  "homepage": "https://github.com/jmeredithklein/todos_node.js#readme"
+  "homepage": "https://github.com/jmeredithklein/todos_node.js#readme",
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
 }
