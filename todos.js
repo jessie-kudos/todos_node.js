@@ -17,6 +17,12 @@ var addTodo = (title) => {
   }
 };
 
+var readTodo = (title) => {
+  var todos = fetchTodos();
+  var filteredtodos = todos.filter((todo) => todo.title === title);
+  return filteredtodos[0];
+};
+
 var deleteTodo = (title) => {
   var todos = fetchTodos();
   var filteredtodos = todos.filter((todo) => todo.title !== title);
@@ -36,7 +42,15 @@ var fetchTodos = () => {
 var saveTodos = (todos) => {
   fs.writeFileSync('todos-data.json', JSON.stringify(todos));
 };
+
+var logTodo = (todo) => {
+  console.log('------');
+  console.log(`It's title is: ${todo.title}`);
+}
+
 module.exports = {
   addTodo,
+  readTodo,
   deleteTodo,
+  logTodo
 };

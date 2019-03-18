@@ -15,6 +15,14 @@ if (command === 'addTodo'){
   var todoDeleted = todos.deleteTodo(argv.title);
   var message = todoDeleted ? 'Todo was deleted' : 'Todo not found';
   console.log(message);
+} else if (command === 'readTodo'){
+  var todo = todos.readTodo(argv.title);
+  if (todo) {
+    console.log('Great! The todo was found.');
+    todos.logTodo(todo);
+  } else {
+    console.log('Whoops! The todo was not found.');
+  }
 } else {
   console.log('Invalid command')
 }
