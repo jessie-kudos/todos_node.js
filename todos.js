@@ -30,6 +30,11 @@ var deleteTodo = (title) => {
 
   return todos.length !== filteredtodos.length;
 };
+
+var listTodos = () => {
+  return fetchTodos();
+}
+
 var fetchTodos = () => {
   try {
     var todosString = fs.readFileSync('todos-data.json');
@@ -52,5 +57,6 @@ module.exports = {
   addTodo,
   readTodo,
   deleteTodo,
+  listTodos,
   logTodo
 };
