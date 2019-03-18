@@ -4,6 +4,12 @@ const _ = require('lodash');
 const yargs = require('yargs');
 const todos = require('./todos.js');
 
-const args = yargs.argv;
+const argv = yargs.argv;
+var command = argv._[0]
 
-console.log('You ran the command: ' + args._[0]);
+console.log('You ran the command: ', command);
+if (command === 'addTodo'){
+  todos.addTodo(argv.title);
+} else {
+  console.log('Invalid command')
+}
